@@ -17,7 +17,8 @@ use App\Http\Controllers\OfferController;
 
 
 Route::get('/',[OfferController::class, 'list']);
-Route::get('/create-offer',[OfferController::class, 'store']);
+Route::view('/create-offer/{id}', 'create-offer');
+Route::post('/create-offer', [OfferController::class, 'store']);
 Route::get('/list-offer',[OfferController::class, 'confirm']);
 
 Route::middleware([

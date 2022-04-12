@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="asset/style.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        
 
         <!-- Styles -->
         <style>
@@ -49,15 +50,27 @@
             <th class="text-left">Offerable</th>
             </tr>
             </thead>
-            <tbody class="table-hover">
             @foreach ($products as $product)
-            <tr>
-            <td class="text-left">{{ $product->id }}</td>
-            <td class="text-left"><a href="{{ asset('create-offer') }}" class="disable-link">{{ $product->product_name }}</a></td>
-            <td class="text-left">{{ $product->is_offerable }}</td>
-            </tr>
-            @endforeach
+            @if($product->is_offerable == 1) {
+              <tbody class="table">
+                <tr>
+                <td class="text-left">{{ $product->id }}</td>
+                <td class="text-left"><a href="create-offer/{{$product->id}}" class="disable-link">{{ $product->product_name }}</a></td>
+                <td>Send Offer</td>
+                </tr>
             </tbody>
+            }
+            @else {
+              <tbody class="table">
+                <tr>
+                <td class="text-left" style="background: rgb(247, 125, 125)">{{ $product->id }}</td>
+                <td class="text-left"  style="background: rgb(247, 125, 125)"><a href="{{ asset('create-offer') }}" class="disable-link" style="pointer-events: none;" _blank="No Offer">{{ $product->product_name }}</a></td>
+                <td style="background: rgb(247, 125, 125)">No Offer</td>
+                </tr>
+            </tbody>
+            }
+            @endif
+            @endforeach
             </table>
     </body>
 </html>

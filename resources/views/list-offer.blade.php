@@ -45,7 +45,9 @@
         <div class="hero fullscreen">
             <div class="hero-body">
                 <div style="margin: auto">
-                    <form class="frame p-0" method="post">
+
+
+                    <form class="frame p-0" method="POST" action="">
                         <div class="frame__body p-0">
                             <div class="row p-0 level fill-height">
                                 <div class="col">
@@ -102,7 +104,7 @@
                                             </div>
                                         </div>
                                         <div class="btn-group u-pull-right">
-                                            <button class="btn-info">Send Offer</button>
+                                            <button type="submit" class="btn-info">Send Offer</button>
                                         </div>
 
                                     </div>
