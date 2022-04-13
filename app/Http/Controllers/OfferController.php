@@ -12,41 +12,43 @@ class OfferController extends Controller
      * Tüm teklifleri listeler
      */
     public function list() {
-       $product = Product::all();
+       $product = Product::paginate(7);
        return view('list', ['products' => $product]);
     }
 
     /**
      * Yeni teklif oluşturur
      */
-    public function store(Request $req, $id) {
+    public function store() {
+        $product = Product::all();
+        return view('create-offer', ['products' => $product]);
+    }
 
-        $req->validate([
+    public function offerForm(Request $request) {
+        // Form validation
+        $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
-            'city' => 'required',
-            'price' => 'required',
-            'product' => 'required',
-            'message' => 'required'
-        ]);
-
-        $offer= new Offer;
-        $offer->name=$req->name;
-        $offer->email=$req->email;
-        $offer->city=$req->city;
-        $offer->price=$req->price;
-        $offer->product=$req->product;
-        $offer->message=$req->message;
-        $offer->save();
-        $product = Product::find($id);
-        return view('create-offer{id}', ['product' => $product]);
+            'product'=>'required',
+            'price' => 'required'
+         ]);
+        //  Store data in database
+        Offer::create($request->all());
+        return redirect()->back()->withErrors('Offer Send')->withInput();
     }
 
     /**
      * Var olan teklifi onaylar
      */
-    public function confirm() {
-        $product = Product::all();
-        return view('list-offer', ['products' => $product]);
+    public function offerList() {
+        $offers = Offer::paginate(7);
+        return view('list-offer', ['offers' => $offers]);
     }
+
+    public function confirm($id) {
+        $offers = Offer::find($id);
+        return view('mail-form', ['offer' => $offers]);
+    }
+
+
 }

@@ -17,17 +17,21 @@ use App\Http\Controllers\OfferController;
 
 
 Route::get('/',[OfferController::class, 'list']);
-Route::view('/create-offer/{id}', 'create-offer');
-Route::post('/create-offer', [OfferController::class, 'store']);
-Route::get('/list-offer',[OfferController::class, 'confirm']);
+Route::get('/create-offer/{id}', [OfferController::class, 'store']);
+Route::post('/create-offer/{id}', [OfferController::class, 'offerForm']);
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
+
+
+Route::middleware(['auth:sanctum',
+config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
-    })->name('dashboard');
+})->name('dashboard');
+
+Route::get('list-offer',[OfferController::class, 'offerList'])->name('list-offer');
+Route::get('mail-form/{id}',[OfferController::class, 'confirm'])->name('mail-form/{id}');
 });
+
 
