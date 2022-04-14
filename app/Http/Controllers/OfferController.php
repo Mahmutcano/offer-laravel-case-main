@@ -50,14 +50,26 @@ class OfferController extends Controller
 
     public function confirm($id) {
         $offer = Offer::find($id);
-
-        Mail::to($offer->email)->send(new OfferMail());
-        
+        Mail::to($offer->email)->send(new OfferMail($offer));
         return view('mail-form', ['offer' => $offer]);
-
-        
-        
     }
 
+    public function sendMail(Request $request) {
+
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'product'=>'required',
+            'price' => 'required',
+            'emailText' => 'required',
+            'offerCase' => 'required',
+            'adminoffer'=>'required'
+         ]);
+         $email = new OfferMail($request);
+         Mail::to($request) // or Mail::to($request->email, $request->name)
+             ->send($email);
+
+
+    }
 
 }

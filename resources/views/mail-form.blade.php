@@ -7,7 +7,7 @@
 
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            
         </x-slot>
 
         <x-jet-validation-errors class="mb-5" />
@@ -18,9 +18,9 @@
             </div>
         @endif
 
-        <form method="POST" action="/send-email">
+        <form method="POST" action="/send-mail">
             @csrf
-
+            @method('POST')
             <div>
                 <h6>Name:</h6>
                 <x-jet-input id="name" name="name" type="text" class="mt-1 block w-full" value="{{ $offer->name }}"/>
@@ -54,6 +54,12 @@
             <div class="mt-4">
                 <h6>User Message:</h6>
                 <x-jet-input id="message" name="message" type="text" class="mt-1 block w-full" value="{{ $offer->message }}"/>
+            </div>
+            <hr />
+
+            <div class="mt-4">
+                <h6>Admin Offer:</h6>
+                <x-jet-input id="adminoffer" name="adminoffer" type="number" class="mt-1 block w-full" value="Admin Offer"/>
             </div>
             <hr />
 
