@@ -19,9 +19,9 @@ class OfferController extends Controller
     /**
      * Yeni teklif oluşturur
      */
-    public function store() {
-        $product = Product::all();
-        return view('create-offer', ['products' => $product]);
+    public function store($id) {
+        $product = Product::find($id);
+        return view('create-offer', ['product' => $product]);
     }
 
     public function offerForm(Request $request) {
@@ -49,6 +49,4 @@ class OfferController extends Controller
         $offers = Offer::find($id);
         return view('mail-form', ['offer' => $offers]);
     }
-
-
 }
