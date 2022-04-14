@@ -1,6 +1,5 @@
 # 📝 Laravel Offer Case Main (Mail)
-
-Responsive Website USING HTML CSS  SASS AND JAVASCRIPT
+Laravel Mail 
 
 ## Product List
 ![github](readmePhoto/list.png)
