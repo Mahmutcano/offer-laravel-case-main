@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Offer;
+use App\Mail\OfferMail;
+use Illuminate\Support\Facades\Mail;
 
 class OfferController extends Controller
 {
@@ -46,7 +49,15 @@ class OfferController extends Controller
     }
 
     public function confirm($id) {
-        $offers = Offer::find($id);
-        return view('mail-form', ['offer' => $offers]);
+        $offer = Offer::find($id);
+
+        Mail::to($offer->email)->send(new OfferMail());
+        
+        return view('mail-form', ['offer' => $offer]);
+
+        
+        
     }
+
+
 }

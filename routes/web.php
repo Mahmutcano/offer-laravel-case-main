@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OfferController;
+use App\Mail\OfferMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,11 @@ config('jetstream.auth_session'),
 
 Route::get('list-offer',[OfferController::class, 'offerList'])->name('list-offer');
 Route::get('mail-form/{id}',[OfferController::class, 'confirm'])->name('mail-form/{id}');
+Route::post('/send-email', function () {
+    Mail::to('mail@mail.com')->send(new OfferMail());
+    return new OfferMail();
+});
+
 });
 
 

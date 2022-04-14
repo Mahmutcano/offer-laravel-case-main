@@ -18,7 +18,7 @@
             </div>
         @endif
 
-        <form method="POST" action="">
+        <form method="POST" action="/send-email">
             @csrf
 
             <div>
