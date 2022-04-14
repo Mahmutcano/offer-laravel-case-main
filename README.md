@@ -28,7 +28,7 @@ If you get stuck, [shoot us an email](mailto:ozgancan9@gmail.com) .
 Clone
 
 ```bash
-git clone https://github.com/Mahmutcano/responsive-sass-javascript-website.git
+git clone https://github.com/Mahmutcano/offer-laravel-case-main.git
 ```
 
 ## License
