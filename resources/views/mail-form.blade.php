@@ -18,43 +18,57 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="">
             @csrf
 
             <div>
                 <h6>Name:</h6>
-                <x-jet-label for="Name" value="{{ $offer->name }}" />
+                <x-jet-input id="name" name="name" type="text" class="mt-1 block w-full" value="{{ $offer->name }}"/>
             </div>
             <hr />
 
             <div class="mt-4">
                 <h6>Email:</h6>
-                <x-jet-label for="password" value="{{ $offer->email }}" />
+                <x-jet-input id="email" name="email" type="text" class="mt-1 block w-full" value="{{ $offer->email }}"/>
             </div>
             <hr />
 
             <div class="mt-4">
                 <h6>City:</h6>
-                <x-jet-label for="password" value="{{ $offer->city }}" />
+                <x-jet-input id="city" name="city" type="text" class="mt-1 block w-full" value="{{ $offer->city }}"/>
             </div>
             <hr />
 
             <div class="mt-4">
                 <h6>Offer Price:</h6>
-                <x-jet-label for="password" value="{{ $offer->price }}" />
+                <x-jet-input id="price" name="price" type="text" class="mt-1 block w-full" value="{{ $offer->price }}"/>
             </div>
             <hr />
 
             <div class="mt-4">
-                <h6>Message</h6>
-                <x-jet-label for="password" value="{{ $offer->message }}" />
+                <h6>Product:</h6>
+                <x-jet-input id="product" name="product" type="text" class="mt-1 block w-full" value="{{ $offer->product }}"/>
+            </div>
+            <hr />
+
+            <div class="mt-4">
+                <h6>User Message:</h6>
+                <x-jet-input id="message" name="message" type="text" class="mt-1 block w-full" value="{{ $offer->message }}"/>
+            </div>
+            <hr />
+
+            <div class="mt-4">
+                <h6>Email Text:</h6>
+                <textarea id="emailText" name="emailText" cols="42" rows="2"></textarea>
             </div>
             <hr />
 
             <div class="block mt-4">
                 <label for="reject" class="flex items-center">
-                    <x-jet-checkbox id="reject" name="reject" />
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Reject') }}</span>
+                    <select name="offerCase" id="offerCase">
+                        <option>Approve</option>
+                        <option>Reject</option>
+                    </select>
                 </label>
             </div>
 

@@ -76,7 +76,7 @@
                     <tr>
                         <td class="text-left" style="background: rgb(247, 125, 125)">{{ $product->id }}</td>
                         <td class="text-left" style="background: rgb(247, 125, 125)"><a
-                                href="{{ asset('create-offer') }}" class="disable-link"
+                                href="create-offer/{{$product->id}}" class="disable-link"
                                 style="pointer-events: none;" _blank="No Offer">{{ $product->product_name }}</a></td>
                         <td style="background: rgb(247, 125, 125)">No Offer</td>
                     </tr>
